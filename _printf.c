@@ -63,7 +63,7 @@ int _printf(const char *format, ...)
 			}
 			if (format[i + 1] == '%')
 				count += _putchar('%');
-			else if (format[i + 1] != 'c' || format[i + 1] != 's' || format[i] != '\0')
+			else if (print_var[j].var_type == NULL && format[i] != '\0')
 			{
 				count += _putchar(format[i]);
 				count += _putchar(format[i + 1]);
