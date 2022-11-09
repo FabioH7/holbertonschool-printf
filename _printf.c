@@ -22,13 +22,15 @@ int print_char(va_list cha)
  * print_string - function to print string
  * @string: string to print
  * Return: len of str
- */ 
+ */
 int print_string(va_list string)
 {
 	char *str;
-	int i;
+	int i = 0;
 
 	str = va_arg(string, char *);
+	if (str == NULL)
+		str = "(null)";
 	for (i = 0; str[i] != '\0'; i++)
 	{
 		_putchar(str[i]);
@@ -45,46 +47,41 @@ int _printf(const char *format, ...)
 {
 	int i = 0, j, count = 0;
 	va_list arg_list;
+	p_struct print_var[] = {{"c", print_char}, {"s", print_string}, {NULL, NULL}};
 
-	p_struct print_var[] = {
-		{"c", print_char},
-		{"s", print_string},
-		{NULL, NULL}
-	};
+	if (format == NULL)
+		return (-1);
 	va_start(arg_list, format);
-	while (format != NULL && format[i] != '\0')
+	for (i = 0; format != NULL && format[i] != '\0'; i++)
 	{
-		j = 0;
 		if (format[i] == '%')
 		{
-			i++;
-			if (format[i] == '%')
+			for (j = 0; print_var[j].var_type != NULL; j++)
 			{
-				_putchar('%');
-				count++;
-			}
-			while (print_var[j].var_type != NULL)
-			{
-				if (format[i] == print_var[j].var_type[0])
+				if (format[i + 1] == print_var[j].var_type[0])
 					count += print_var[j].f(arg_list);
-				j++;
 			}
+			if (format[i + 1] == '%')
+				count += _putchar('%');
+			else if (format[i + 1] != '\0')
+			{
+				count += _putchar(format[i]);
+				count += _putchar(format[i + 1]);
+			}
+			else
+				return (-1);
+			i++;
+
 		}
 		else if (format[i] == '\\')
 		{
-			i++;
 			if (format[i] == '0')
-				_putchar('\0');
+				count += _putchar('\0');
 			else if (format[i] == 'n')
-				_putchar('\n');
-			count++;
+				count += _putchar('\n');
 		}
 		else
-		{
-			_putchar(format[i]);
-			count++;
-		}
-		i++;
+			count += _putchar(format[i]);
 	}
 	va_end(arg_list);
 	return (count);
