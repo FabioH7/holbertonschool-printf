@@ -70,7 +70,7 @@ int _printf(const char *format, ...)
 				count += _putchar(format[i]);
 				count += _putchar(format[i + 1]);
 			}
-			else
+			else if (format[i + 1] == '\0')
 				return (-1);
 			i++;
 
