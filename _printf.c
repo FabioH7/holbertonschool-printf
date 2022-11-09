@@ -59,7 +59,10 @@ int _printf(const char *format, ...)
 		{
 			i++;
 			if (format[i] == '%')
+			{
 				_putchar('%');
+				count++;
+			}
 			while (print_var[j].var_type != NULL)
 			{
 				if (format[i] == print_var[j].var_type[0])
@@ -74,6 +77,7 @@ int _printf(const char *format, ...)
 				_putchar('\0');
 			else if (format[i] == 'n')
 				_putchar('\n');
+			count++;
 		}
 		else
 		{
