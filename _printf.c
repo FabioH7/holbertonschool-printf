@@ -63,15 +63,15 @@ int _printf(const char *format, ...)
 					count += print_var[j].f(arg_list);
 				}
 			}
-			if (format[i + 1] != 'c' && format[i + 1] != 's')
+			if (format[i + 1] != 'c' && format[i + 1] != 's' && format[i] == '%')
 			{
 				count += _putchar(format[i]);
 				count += _putchar(format[i + 1]);
 			}
 			else if (format[i + 1] == '\0')
 				return (-1);
-			else if (format[i + 1] == '%')
-				count += _putchar(format[i + 1]);
+			else
+				count += _putchar(format[i]);
 			i++;
 
 		}
