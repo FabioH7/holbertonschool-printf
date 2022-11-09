@@ -63,7 +63,7 @@ int _printf(const char *format, ...)
 					count += print_var[j].f(arg_list);
 				}
 			}
-			if (format[i + 1] != 'c' && format[i + 1] != 's' && format[i] != '%')
+			if (format[i + 1] != 'c' && format[i + 1] != 's')
 			{
 				count += _putchar(format[i]);
 				count += _putchar(format[i + 1]);
