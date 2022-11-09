@@ -76,8 +76,10 @@ int _printf(const char *format, ...)
 				_putchar('\n');
 		}
 		else
+		{
 			_putchar(format[i]);
-		count++;
+			count++;
+		}
 		i++;
 	}
 	va_end(arg_list);
