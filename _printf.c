@@ -80,7 +80,6 @@ int _printf(const char *format, ...)
 		count++;
 		i++;
 	}
-	_putchar('\0');
 	va_end(arg_list);
 	return (count);
 }
