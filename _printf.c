@@ -59,10 +59,15 @@ int _printf(const char *format, ...)
 			for (j = 0; print_var[j].var_type != NULL; j++)
 			{
 				if (format[i + 1] == print_var[j].var_type[0])
+				{
 					count += print_var[j].f(arg_list);
+				}
 			}
-			if (format[i + 1] == '%')
-				count += _putchar('%');
+			if (format[i + 1] != 'c')
+			{
+				count += _putchar(format[i]);
+				count += _putchar(format[i + 1]);
+			}
 			else if (format[i + 1] == '\0')
 				return (-1);
 			i++;
