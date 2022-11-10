@@ -59,21 +59,22 @@ int _printf(const char *format, ...)
 			for (j = 0; print_var[j].var_type != NULL; j++)
 			{
 				if (format[i + 1] == print_var[j].var_type[0])
+				{
 					count += print_var[j].f(arg_list);
+				}
 			}
 			if (format[i + 1] == '%')
 				count += _putchar('%');
+			else if (format[i + 1] != 'c' && format[i + 1] != 's' &&
+					format[i + 1] != '\0')
+			{
+				count += _putchar(format[i]);
+				count += _putchar(format[i + 1]);
+			}
 			else if (format[i + 1] == '\0')
 				return (-1);
 			i++;
 
-		}
-		else if (format[i] == '\\')
-		{
-			if (format[i] == '0')
-				count += _putchar('\0');
-			else if (format[i] == 'n')
-				count += _putchar('\n');
 		}
 		else
 			count += _putchar(format[i]);
