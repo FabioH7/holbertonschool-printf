@@ -10,4 +10,5 @@ int print_char(va_list cha);
 int print_string(va_list string);
 int _putchar(char c);
 int _printf(const char *format, ...);
+int p_int(va_list ap);
 #endif
