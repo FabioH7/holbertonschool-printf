@@ -39,6 +39,37 @@ int print_string(va_list string)
 }
 
 /**
+ * p_int - prints out an int
+ * @ap: action pointer to the numbers incoming
+ */
+int p_int(va_list ap)
+{
+	int n = va_arg(ap, int);
+	int i;
+	int print = 0;
+
+	if (n < 0)
+	{
+		print += _putchar('-');
+	}
+ 	for (i = 1000000000; i > 0; i /= 10)
+	{
+		if (n / i)
+ 		{
+		if ((n / i) % 10 < 0)
+			print += _putchar(-(n / i % 10) + '0');
+		else
+			print += _putchar((n / i % 10) + '0');
+		}
+		else if ( n / i == 0 && i == 1)
+		{
+			print += _putchar((n / i % 10) + '0');
+		}
+	}
+		return (print);
+}
+
+/**
  * _printf - print everything
  * @format: what to print
  * Return: 0 if succesful
