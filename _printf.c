@@ -78,13 +78,6 @@ int _printf(const char *format, ...)
 			i++;
 
 		}
-		else if (format[i] == '\\')
-		{
-			if (format[i + 1] == '\\')
-				count += _putchar('\\');
-			else if (format[i + 1] == 'n')
-				count += _putchar('\n');
-		}
 		else
 			count += _putchar(format[i]);
 	}
