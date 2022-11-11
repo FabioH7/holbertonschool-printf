@@ -7,7 +7,9 @@
  */
 int change_int(va_list arg_list)
 {
-	long int x = va_arg(arg_list, int);	
+	long int x;
+
+	x = va_arg(arg_list, int);
 	if (x < 0)
 		return (print_int(x, 2));
 	return (print_int(x, 1));
@@ -22,6 +24,7 @@ int change_int(va_list arg_list)
 int print_int(long int n, int count)
 {
 	int new_count = count;
+
 	if (n < 0)
 	{
 		_putchar('-');
