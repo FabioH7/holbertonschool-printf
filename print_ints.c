@@ -3,6 +3,9 @@
 int change_int(va_list arg_list)
 {
 	long int x = va_arg(arg_list, int);
+	
+	if (x < 0)
+		return (print_int(x, 2));
 	return (print_int(x, 1));
 }
 
