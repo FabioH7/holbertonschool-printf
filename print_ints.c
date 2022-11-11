@@ -16,7 +16,7 @@ int print_int(long int n, int count)
 	}
 	if (n / 10)
 	{
-		new_count += print_int(n / 10, count + 1);
+		new_count = print_int(n / 10, count + 1);
 	}
 	_putchar(n % 10 + '0');
 	return (new_count);
